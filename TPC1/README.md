@@ -19,7 +19,7 @@
 
 ## Resumo
 ### 1- Maze: nível 10
-O personagem move-se em frente ao longo do caminho e vai verificando se pode virar à direita e de seguida à esquerda. Sempre que encontra uma possibilidade de virar, faz a mudança de direção. Se não puder virar, continua em frente. Quando encontra um obstáculo e não consegue avançar, verifica, neste caso, se pode virar primeiro à esquerda e, caso não seja possível, à direita. 
+O personagem move-se em frente ao longo do caminho e vai verificando se pode virar à direita e de seguida à esquerda. Sempre que encontra uma possibilidade de virar, faz a mudança de direção. Se não puder virar, continua em frente. Quando encontra um obstáculo e não consegue avançar, verifica, neste caso, se pode virar primeiro à esquerda e, caso não seja possível, à direita. Desta forma, vai seguindo o caminho do labirinto até encontrar a meta, onde o ciclo termina.
 ### 2- Turtle: nível 10
 Para desenhar o barco, desenhei linha por linha e fui ajustando as medidas e os ângulos por tentativa e erro, até ficar semelhante ao da imagem proposta. Primeiro, mudei a grossura da linha para o traço ficar mais forte (set width to 3) e desenhei o mastro e a base do barco, virando a tartaruga nos cantos para fazer o formato inclinado. Posteriormente, levantei a caneta (pen up) para mover a tartaruga sem rabiscar e pousei-a (pen down) para desenhar as linhas que ficam no interior do barco. Por fim, subi a tartaruga para desenhar os dois triângulos grandes das velas e terminei com o triângulo pequeno da bandeira no topo.
 
