@@ -72,8 +72,7 @@ Neste programa utilizei principalmente as estruturas que foram abordadas nas aul
 * `input()` para receber informações do utilizador;
 * `print()` para apresentar mensagens;
 * variáveis para guardar os valores necessários ao funcionamento do jogo;
-
-Como queria que o computador gerasse um número aleatório na primeira modalidade, recorri a uma pequena pesquisa para perceber como poderia fazer isso, tendo optado por utilizar o `random.randint()`.
+* `random.randint()` para gerar o número aleatório na primeira modalidade.
 
 ---
 
