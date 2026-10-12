@@ -160,7 +160,7 @@ Quando o utilizador escolhe a opção 0, é apresentada uma mensagem a indicar q
 
 ## Estruturas utilizadas
 
-Neste programa utilizei principalmente as seguintes estruturas e comandos:
+Neste programa utilizei principalmente os seguintes comandos:
 
 * `def` para criar as diferentes funções;
 * `if`, `elif` e `else` para tomar decisões;
