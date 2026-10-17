@@ -18,176 +18,116 @@
 ---
 
 ## Resumo
-# TPC5: Aplicação para gestão de alunos
-
-## Resumo
 
 ### Descrição
 
-Este programa consiste numa aplicação em Python para a gestão de uma turma de alunos. 
+Este programa consiste numa aplicação em Python para gerir uma turma de alunos. Através de um menu, é possível criar uma turma, inserir alunos, listar a turma, consultar um aluno pelo seu ID, guardar os dados num ficheiro e carregar uma turma guardada anteriormente.
 
-Cada aluno é representado por um tuplo com três elementos: o nome, o ID e uma lista com as notas do TPC, do projeto e do teste. A turma é representada por uma lista que contém os vários alunos.
+Cada aluno é representado por um tuplo com o nome, o ID e uma lista com três notas: TPC, projeto e teste. A turma é representada por uma lista que contém os vários alunos.
 
-A aplicação utiliza uma variável interna chamada `turma`, onde ficam guardados os alunos da turma que está a ser utilizada. Desta forma, é possível realizar várias operações sobre a mesma turma sem ter de executar novamente o programa.
+O programa utiliza a variável `turma` para guardar os alunos com que está a trabalhar. Quando é criada uma nova turma ou carregada uma turma de um ficheiro, o conteúdo anterior desta variável é substituído.
 
 ### Funcionamento do programa
 
-Quando o programa começa, é apresentado um menu com as opções disponíveis:
+Quando o programa começa, é apresentado um menu com as seguintes opções:
 
-- **(1) Criar uma turma** — cria uma nova turma vazia.
-- **(2) Inserir um aluno na turma** — permite introduzir o nome, o ID e as notas de um aluno.
-- **(3) Listar a turma** — apresenta os dados de todos os alunos da turma.
-- **(4) Consultar um aluno por ID** — procura um aluno através do seu ID e apresenta os seus dados.
-- **(8) Guardar a turma em ficheiro** — guarda os dados dos alunos num ficheiro de texto.
-- **(9) Carregar uma turma dum ficheiro** — lê os dados guardados num ficheiro e recupera a turma.
+- **(1) Criar uma turma** — cria uma turma vazia.
+- **(2) Inserir um aluno na turma** — pede os dados do aluno e acrescenta-o à turma.
+- **(3) Listar a turma** — apresenta os dados dos alunos.
+- **(4) Consultar um aluno por ID** — procura um aluno através do seu ID.
+- **(8) Guardar a turma em ficheiro** — guarda os dados no ficheiro `turma.txt`.
+- **(9) Carregar uma turma dum ficheiro** — recupera os dados guardados.
 - **(0) Sair da aplicação** — termina o programa.
-
-Depois de executar a operação escolhida, o programa volta a apresentar o menu, permitindo ao utilizador continuar a trabalhar com a turma.
 
 ### Criação da turma
 
-Na opção 1, utilizei a função `criarTurma()` para criar uma nova turma.
+Na opção 1, utilizei a função `criarTurma()`.
 
-Inicialmente, a variável `turma` recebe uma lista vazia:
+A variável `turma` começa por receber uma lista vazia, através de `turma = []`. Esta lista vai ser utilizada para guardar os alunos inseridos posteriormente.
 
-`turma = []`
-
-Esta lista vai guardar os alunos que forem inseridos posteriormente. Depois, o programa apresenta uma mensagem a confirmar que a turma foi criada com sucesso.
-
-No final, a função devolve a lista através de `return turma`, permitindo guardar a turma criada na variável `turma` principal do programa.
-
-Sempre que esta opção é selecionada, é criada uma nova turma vazia, substituindo a turma que estava guardada anteriormente.
+No final, a função devolve a lista com `return turma`, permitindo que a turma criada fique guardada na variável `turma` principal do programa.
 
 ### Inserção de um aluno
 
-Na opção 2, utilizei a função `inserirAluno(turma)` para adicionar um aluno à turma existente.
+Na opção 2, utilizei a função `inserirAluno(turma)`.
 
-Primeiro, o programa pede ao utilizador o nome e o ID do aluno. De seguida, são chamadas três funções para ler as respetivas notas:
+Primeiro, o programa pede o nome e o ID do aluno. Para ler as três notas, criei as funções `lerNotatpc()`, `lerNotaproj()` e `lerNotateste()`, evitando repetir o mesmo código dentro da função principal de inserção.
 
-- `lerNotatpc()` — lê a nota do TPC.
-- `lerNotaproj()` — lê a nota do projeto.
-- `lerNotateste()` — lê a nota do teste.
+Em cada uma destas funções, a variável `nota` guarda o valor introduzido pelo utilizador. Um ciclo `while` verifica se a nota é inferior a 0 ou superior a 200. Se alguma destas condições se verificar, o programa pede novamente a nota.
 
-Em cada uma destas funções, utilizei um ciclo `while` para verificar se a nota introduzida está entre 0 e 200, inclusive. Se o valor estiver fora deste intervalo, o programa pede novamente a nota até ser introduzido um valor válido.
-
-Depois de recolher os dados, as três notas são guardadas numa lista:
-
-`notas = [notaTPC, notaProj, notaTeste]`
-
-De seguida, é criado o tuplo que representa o aluno:
-
-`aluno = (nome, id, notas)`
-
-Este tuplo é acrescentado à turma através de `turma.append(aluno)`.
-
-No final, o programa apresenta uma mensagem a confirmar que o aluno foi inserido e devolve a turma atualizada.
+Depois de obter os valores, criei a lista `notas = [notaTPC, notaProj, notaTeste]` e o tuplo `aluno = (nome, id, notas)`. Por fim, utilizei `turma.append(aluno)` para acrescentar o aluno à lista da turma.
 
 ### Listagem da turma
 
-Na opção 3, utilizei a função `listarTurma(turma)` para apresentar os alunos existentes na turma.
+Na opção 3, utilizei a função `listarTurma(turma)`.
 
-Primeiro, o programa verifica se a turma está vazia através de `len(turma) == 0`. Se não existir nenhum aluno, é apresentada a mensagem:
+Comecei por verificar se a turma estava vazia, utilizando `len(turma) == 0`. Se não existirem alunos, o programa apresenta uma mensagem a indicar que a turma está vazia.
 
-`A turma está vazia!`
-
-Caso contrário, o programa apresenta o título "Lista de Alunos:" e percorre a turma utilizando um ciclo `for`.
-
-Para cada aluno, são obtidos o nome, o ID e a lista das notas. Estes dados são depois apresentados no monitor, permitindo consultar a informação de todos os alunos inseridos.
-
-No final, a função devolve a turma.
+Caso contrário, utilizei um ciclo `for` para percorrer os alunos da turma. Em cada repetição, as posições do tuplo permitem obter o nome (`aluno[0]`), o ID (`aluno[1]`) e as notas (`aluno[2]`). Estes dados são depois apresentados através de `print()`.
 
 ### Consulta de um aluno por ID
 
-Na opção 4, utilizei a função `idAluno(turma)` para procurar um aluno através do seu ID.
+Na opção 4, utilizei a função `idAluno(turma)`.
 
-Primeiro, o programa pede ao utilizador que introduza o ID do aluno que pretende consultar.
+Depois de pedir o ID ao utilizador, utilizei a variável `i`, inicializada com 0, para percorrer a turma através de um ciclo `while`.
 
-Depois, utilizei a variável `i`, que começa em 0, para percorrer a turma através de um ciclo `while`. A variável `encontrado` começa com o valor `False` e serve para indicar se o aluno foi encontrado.
+A variável `encontrado` começa com o valor `False` e passa para `True` quando o ID introduzido coincide com o ID de um dos alunos. Nesse caso, os dados do aluno são guardados na variável `aluno_encontrado` e apresentados no monitor.
 
-Em cada repetição, o programa compara o ID introduzido com o ID do aluno que se encontra na posição `i` da turma.
+O ciclo continua enquanto ainda existirem alunos por verificar e nenhum aluno tiver sido encontrado. Se a procura terminar sem encontrar o ID, o programa apresenta a mensagem "Aluno não encontrado.".
 
-Se os IDs forem iguais, o aluno é guardado na variável `aluno_encontrado` e são apresentados o nome, o ID e as três notas. Nesse caso, a variável `encontrado` passa para `True`, fazendo com que a procura termine.
-
-Se o ciclo terminar sem encontrar o aluno, o programa apresenta a mensagem:
-
-`Aluno não encontrado.`
-
-No final, a função devolve o aluno encontrado. Se não existir nenhum aluno com o ID indicado, devolve um tuplo vazio, que foi o valor inicial da variável `aluno_encontrado`.
+No final, a função devolve o aluno encontrado. Se não existir nenhum aluno com esse ID, devolve o tuplo vazio que foi atribuído inicialmente à variável `aluno_encontrado`.
 
 ### Guardar a turma em ficheiro
 
-Na opção 8, utilizei a função `guardarTurma(turma)` para guardar os dados da turma num ficheiro de texto chamado `turma.txt`.
+Na opção 8, utilizei a função `guardarTurma(turma)` para guardar os dados no ficheiro `turma.txt`.
 
-Para isso, o ficheiro é aberto no modo de escrita, através de:
+O ficheiro é aberto no modo de escrita, através de `open("turma.txt", "w")`. Depois, um ciclo `for` percorre a turma e, em cada repetição, as informações do aluno são separadas nas variáveis `nome`, `id` e `notas`.
 
-`file = open("turma.txt", "w")`
+Utilizei `file.write()` para escrever o nome, o ID e as três notas numa única linha, separando os valores com o símbolo `#`. O `\n` permite que o aluno seguinte seja escrito numa nova linha.
 
-Depois, o programa percorre a turma com um ciclo `for` e obtém o nome, o ID e as notas de cada aluno.
-
-Os dados de cada aluno são escritos numa linha do ficheiro, separados pelo símbolo `#`. A informação guardada inclui o nome, o ID, a nota do TPC, a nota do projeto e a nota do teste.
-
-Para escrever os dados, utilizei a instrução:
-
-`file.write(f"{nome}#{id}#{notas[0]}#{notas[1]}#{notas[2]}\n")`
-
-O símbolo `\n` permite que cada aluno fique registado numa linha diferente.
-
-No final, o ficheiro é fechado através de `file.close()` e o programa apresenta uma mensagem a confirmar que a turma foi guardada com sucesso.
-
-Como o ficheiro é aberto no modo `"w"`, os dados anteriores desse ficheiro são substituídos pelos dados da turma que está a ser guardada.
+No final, utilizei `file.close()` para fechar o ficheiro e o programa apresenta uma mensagem a confirmar que a turma foi guardada. Como o ficheiro é aberto no modo `"w"`, os dados que já existiam nesse ficheiro são substituídos.
 
 ### Carregar uma turma de um ficheiro
 
-Na opção 9, utilizei a função `carregarTurma()` para recuperar uma turma guardada anteriormente no ficheiro `turma.txt`.
+Na opção 9, utilizei a função `carregarTurma()` para recuperar os alunos guardados anteriormente.
 
-Primeiro, é criada uma lista vazia para guardar os alunos que vão ser recuperados:
+Primeiro, criei uma lista vazia com `turma = []` e abri o ficheiro no modo de leitura, através de `open("turma.txt", "r")`.
 
-`turma = []`
+Depois, um ciclo `for` percorre cada linha do ficheiro. Utilizei `line.split("#")` para separar os dados, guardando-os na variável `dados`.
 
-Depois, o ficheiro é aberto no modo de leitura, através de:
+Através das posições desta lista, recupero o nome, o ID e as três notas. Como as notas foram guardadas no ficheiro como texto, utilizei `float()` para as converter novamente em números.
 
-`file = open("turma.txt", "r")`
+De seguida, criei a lista `notas` e reconstruí o tuplo `aluno`, acrescentando-o à turma com `turma.append(aluno)`.
 
-O programa percorre o ficheiro linha a linha, utilizando um ciclo `for`. Em cada linha, os dados são separados através do método `split("#")`, utilizando o símbolo `#` como separador.
-
-A partir da lista de dados obtida, são recuperados o nome e o ID do aluno, bem como as três notas.
-
-Como as notas foram guardadas no ficheiro como texto, utilizo `float()` para voltar a convertê-las em números.
-
-De seguida, é criada a lista com as notas e reconstruído o tuplo que representa o aluno:
-
-`notas = [notaTPC, notaProj, notaTeste]`
-
-`aluno = (nome, id, notas)`
-
-Cada aluno recuperado é acrescentado à nova turma através de `turma.append(aluno)`.
-
-No final, o ficheiro é fechado e a função devolve a turma reconstruída. Assim, os dados guardados podem voltar a ser utilizados pelo programa sem ser necessário introduzir novamente todos os alunos.
-
-Quando o utilizador seleciona esta opção no menu, a turma carregada substitui a turma que estava anteriormente guardada na variável `turma`. O programa apresenta uma mensagem de confirmação e mostra os alunos recuperados através da função `listarTurma(turma)`.
+No final, o ficheiro é fechado e a função devolve a turma reconstruída. No menu, a turma devolvida substitui a que estava anteriormente guardada na variável `turma`, sendo depois apresentada através da função `listarTurma(turma)`.
 
 ### Menu e repetição do programa
 
-A aplicação utiliza um ciclo `while` para manter o menu em funcionamento enquanto o utilizador não escolher a opção 0.
+Para manter o menu em funcionamento, utilizei um ciclo `while` que se repete enquanto `opcao != "0"`.
 
-A variável `opcao` guarda a opção introduzida pelo utilizador. Dependendo do valor escolhido, o programa utiliza as condições `if`, `elif` e `else` para executar a operação correspondente.
+A variável `opcao` guarda a escolha do utilizador. As condições `if`, `elif` e `else` permitem executar a função correspondente à opção escolhida.
 
-Por exemplo, quando o utilizador escolhe a opção 2, o programa verifica se já foi criada uma turma. Se existir uma turma, é chamada a função `inserirAluno(turma)`. Caso contrário, é apresentada a mensagem:
+Criei também a variável `turma_criada`, que começa com o valor `False` e passa para `True` quando é criada ou carregada uma turma. Antes de inserir, listar, consultar ou guardar alunos, o programa verifica esta variável. Se ainda não existir uma turma, apresenta uma mensagem a informar que é necessário criá-la primeiro.
 
-`É necessário criar uma turma primeiro!`
+A variável `turma_guardada` é atualizada quando a turma é guardada ou carregada e passa para `False` quando é criada uma nova turma. No código atual, esta variável não é utilizada nas condições do menu.
 
-Para controlar este funcionamento, utilizei as variáveis `turma_criada` e `turma_guardada`.
+Quando o utilizador escolhe a opção 0, o programa apresenta a mensagem "Aplicação encerrada.". Se introduzir uma opção que não existe, recebe uma mensagem de erro e pode voltar a escolher.
 
-A variável `turma_criada` indica se já foi criada ou carregada uma turma. Desta forma, as opções de inserção, listagem, consulta e gravação só podem ser utilizadas depois de existir uma turma.
+## Estruturas utilizadas
 
-A variável `turma_guardada` é atualizada quando a turma é guardada ou carregada, e passa para `False` quando é criada uma nova turma. No código atual, esta variável não é utilizada para controlar nenhuma condição do menu, servindo apenas para registar esse estado.
+Neste programa utilizei principalmente as seguintes estruturas e comandos:
 
-Quando o utilizador escolhe a opção 0, o programa apresenta a mensagem:
-
-`Aplicação encerrada.`
-
-Se for introduzida uma opção que não existe no menu, o programa apresenta uma mensagem de erro e volta a pedir uma opção.
-
+- `def` para criar as diferentes funções;
+- `if`, `elif` e `else` para tomar decisões;
+- `while` e `for` para repetir operações e percorrer os dados;
+- `input()` e `print()` para interagir com o utilizador;
+- variáveis, listas e tuplos para guardar e organizar os dados;
+- `append()` para acrescentar alunos à turma;
+- `len()` para verificar se a turma está vazia;
+- `float()` para converter as notas em números;
+- `split()` para separar os dados lidos do ficheiro;
+- `open()`, `write()` e `close()` para guardar e recuperar informação;
+- `return` para devolver os resultados das funções.
 
 ---
 
