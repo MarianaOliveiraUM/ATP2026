@@ -21,7 +21,7 @@
 
 ### Descrição
 
-Este programa consiste numa aplicação em Python para gerir uma turma de alunos. Através de um menu, é possível criar uma turma, inserir alunos, listar a turma, consultar um aluno pelo seu ID, guardar os dados num ficheiro e carregar uma turma guardada anteriormente.
+Este programa consiste numa aplicação em Python para gerir uma turma de alunos. 
 
 Cada aluno é representado por um tuplo com o nome, o ID e uma lista com três notas: TPC, projeto e teste. A turma é representada por uma lista que contém os vários alunos.
 
@@ -51,7 +51,7 @@ No final, a função devolve a lista com `return turma`, permitindo que a turma 
 
 Na opção 2, utilizei a função `inserirAluno(turma)`.
 
-Primeiro, o programa pede o nome e o ID do aluno. Para ler as três notas, criei as funções `lerNotatpc()`, `lerNotaproj()` e `lerNotateste()`, evitando repetir o mesmo código dentro da função principal de inserção.
+Primeiro, o programa pede o nome e o ID do aluno. Para ler as três notas, criei as funções `lerNotatpc()`, `lerNotaproj()` e `lerNotateste()`.
 
 Em cada uma destas funções, a variável `nota` guarda o valor introduzido pelo utilizador. Um ciclo `while` verifica se a nota é inferior a 0 ou superior a 200. Se alguma destas condições se verificar, o programa pede novamente a nota.
 
@@ -73,9 +73,7 @@ Depois de pedir o ID ao utilizador, utilizei a variável `i`, inicializada com 0
 
 A variável `encontrado` começa com o valor `False` e passa para `True` quando o ID introduzido coincide com o ID de um dos alunos. Nesse caso, os dados do aluno são guardados na variável `aluno_encontrado` e apresentados no monitor.
 
-O ciclo continua enquanto ainda existirem alunos por verificar e nenhum aluno tiver sido encontrado. Se a procura terminar sem encontrar o ID, o programa apresenta a mensagem "Aluno não encontrado.".
-
-No final, a função devolve o aluno encontrado. Se não existir nenhum aluno com esse ID, devolve o tuplo vazio que foi atribuído inicialmente à variável `aluno_encontrado`.
+O ciclo continua enquanto ainda existirem alunos por verificar e nenhum aluno tiver sido encontrado. Se a procura terminar sem encontrar o ID, o programa apresenta a mensagem "Aluno não encontrado.". Caso contrário, a função devolve o aluno encontrado. 
 
 ### Guardar a turma em ficheiro
 
@@ -113,21 +111,6 @@ A variável `turma_guardada` é atualizada quando a turma é guardada ou carrega
 
 Quando o utilizador escolhe a opção 0, o programa apresenta a mensagem "Aplicação encerrada.". Se introduzir uma opção que não existe, recebe uma mensagem de erro e pode voltar a escolher.
 
-## Estruturas utilizadas
-
-Neste programa utilizei principalmente as seguintes estruturas e comandos:
-
-- `def` para criar as diferentes funções;
-- `if`, `elif` e `else` para tomar decisões;
-- `while` e `for` para repetir operações e percorrer os dados;
-- `input()` e `print()` para interagir com o utilizador;
-- variáveis, listas e tuplos para guardar e organizar os dados;
-- `append()` para acrescentar alunos à turma;
-- `len()` para verificar se a turma está vazia;
-- `float()` para converter as notas em números;
-- `split()` para separar os dados lidos do ficheiro;
-- `open()`, `write()` e `close()` para guardar e recuperar informação;
-- `return` para devolver os resultados das funções.
 
 ---
 
