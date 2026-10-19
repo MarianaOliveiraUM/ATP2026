@@ -13,7 +13,7 @@
 **Nome:** Mariana Veloso Oliveira  
 **ID:** a115027 
 
-<img src="foto5.jpg" alt="Foto do autor" width="100">
+<img src="fototpc5.jpg" alt="Foto do autor" width="100">
 
 ---
 
