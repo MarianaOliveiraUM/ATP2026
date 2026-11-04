@@ -61,7 +61,7 @@ Utilizei um ciclo `while` para repetir o processo enquanto o número tivesse doi
 
 Esta função procura uma string dentro de outra e devolve a posição onde aparece pela primeira vez.
 
-Para isso, percorri a primeira string com um ciclo `for` e comparei os seus caracteres com os da segunda string. Se encontrar uma correspondência, a função devolve a posição. Se não encontrar, devolve `-1`.
+Para isso, utilizei dois ciclos `for` e uma variável `resultado`, que começa com o valor `-1`. O ciclo exterior percorre as posições da primeira string onde a segunda ainda cabe, e o ciclo interior compara, caracter a caracter, a segunda string com a primeira. Se todos os caracteres forem iguais, guardo a posição em `resultado`. Como só guardo quando `resultado` ainda é `-1`, a função devolve apenas a primeira ocorrência. Caso não encontre, devolve `-1`.
 
 **TPC3 – A Rede Social**
 
